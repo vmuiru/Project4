@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from .models import Article
+from django.shortcuts import render, redirect
+from .models import Article, Comment
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from .forms import CommentForm
 # Create your views here.
 
 def home(request):
@@ -12,6 +14,25 @@ def articles_index(request):
   articles = Article.objects.all()
   return render(request, 'articles/index.html', { 'articles': articles })
 
-def articles_detail(request, articles_id):
-  article = Article.objects.get(id=articles_id)
-  return render(request, 'articles/detail.html', {'article': article})
+def articles_detail(request, article_id):
+  article = Article.objects.get(id=article_id)
+  comment_form = CommentForm()
+  return render(request, 'articles/detail.html', {'article': article, 'comment_form': comment_form})
+
+
+def add_comment(request, article_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.article_id = article_id
+    new_comment.save()
+  return redirect('articles_detail', article_id = article_id)
+
+# # def add_feeding(request, cat_id):
+#     form = FeedingForm(request.POST)
+#     if form.is_valid():
+#         new_feeding = form.save(commit=False)
+#         new_feeding.cat_id = cat_id
+#         new_feeding.save()
+#     return redirect('cats_detail', cat_id=cat_id)
+  

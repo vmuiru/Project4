@@ -1,20 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{%  load static %}
 <h1>Your Good News Index</h1>
 
 {% for article in articles %}
-<div>
-<a href="{% url 'articles_detail' article.id %}">
-        <h3>{{ article.title }}</h3>
-        <p>Written by:{{ article.author }}</p>
-        <p>{{ article.content }}</p>
+  <a href="{% url 'articles_detail' article.id %}">
+      <div class="card-group">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'NYTimes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ article.short_title}}</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </a>
+          <div class="card-footer">
+            <small class="text-muted">Written by: {{article.author}}</small>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="{% static 'NYTimes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ article.short_title}}</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Written by: {{article.author}}</small>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="{% static 'NYTimes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ article.short_title}}</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Written by: {{article.author}}</small>
+          </div>
+        </div>
+      </div>
         
-    
+        
+      {% endfor %} 
 </div>
-{% endfor %}
-</a>
+
+
 
 
 {% endblock %}
