@@ -1,16 +1,22 @@
 from django.db import models
+
 from datetime import date
 
 # Create your models here.
 class Article(models.Model):
-    title = models.CharField(max_length=150)
-    author = models.CharField(max_length=150)
+    short_title = models.CharField(max_length=150)
+    long_title = models.CharField(max_length=200)
+    author = models.CharField('author(s)',   max_length=150)
+    publication = models.CharField('published in: ', max_length=150)
     content = models.TextField(max_length=1000)
+    # title = models.CharField(max_length=150)
+    # author = models.CharField(max_length=150)
+    # content = models.TextField(max_length=1000)
     
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title and self.author
+        return self.short_title and self.author
 
 class Comment(models.Model):
     content = models.CharField(max_length=250)
@@ -20,3 +26,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.date
+    
+    class Meta:
+        ordering = ['-date']
+

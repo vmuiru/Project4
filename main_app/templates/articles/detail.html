@@ -4,5 +4,24 @@
 
 <h1>Your Good News Details</h1>
 
+    <form action="{% url 'add_comment' article.id %}" method="post">
+    {% csrf_token %}
+    {{  comment_form.as_p  }}
+    <input type="submit" value="Add Comment" class='btn-outline-dark'/>
+    </form>
+    <!-- <form action='{% url "add_comment" article.id %}' method='POST'>
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type="submit" class='btn' value='Add Comment'/>
+      </form> -->
+
 
 {% endblock %}
+
+<!-- <form action="" method="POST">
+        {% csrf_token %}
+
+        {{ form.as_table }}
+
+        <input type='submit' value='Submit' class='btn'>
+    </form> -->
