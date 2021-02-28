@@ -28,11 +28,16 @@ def add_comment(request, article_id):
     new_comment.save()
   return redirect('articles_detail', article_id = article_id)
 
-# # def add_feeding(request, cat_id):
-#     form = FeedingForm(request.POST)
-#     if form.is_valid():
-#         new_feeding = form.save(commit=False)
-#         new_feeding.cat_id = cat_id
-#         new_feeding.save()
-#     return redirect('cats_detail', cat_id=cat_id)
+class CreateArticle(CreateView):
+  model = Article
+  fields = '__all__'
+
+class ArticleUpdate(UpdateView):
+  model = Article
+  fields = ['content']
+
+class ArticleDelete(DeleteView):
+  model = Article
+  success_url='/articles/'
+
   
