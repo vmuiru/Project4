@@ -9,19 +9,27 @@
     {{  comment_form.as_p  }}
     <input type="submit" value="Add Comment" class='btn-outline-dark'/>
     </form>
-    <!-- <form action='{% url "add_comment" article.id %}' method='POST'>
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-        <input type="submit" class='btn' value='Add Comment'/>
-      </form> -->
+
+    <table class="striped">
+        <thead>
+          <tr><th>Date</th><th>Content</th></tr>
+        </thead>
+        <tbody>
+          {% for comment in article.comment_set.all %}
+            <tr>
+              <td>{{comment.date}}</td>
+              <td>{{comment.content}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+     
+    
+     
+
+
 
 
 {% endblock %}
 
-<!-- <form action="" method="POST">
-        {% csrf_token %}
-
-        {{ form.as_table }}
-
-        <input type='submit' value='Submit' class='btn'>
-    </form> -->

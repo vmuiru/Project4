@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 from datetime import date
 
 # Create your models here.
@@ -18,11 +18,16 @@ class Article(models.Model):
     def __str__(self):
         return self.short_title and self.author
 
+    def get_absolute_url(self):
+        return reverse('articles_index')
+
+   
+
 class Comment(models.Model):
     content = models.CharField(max_length=250)
     date = models.DateField('date of comment')
 
-    articles = models.ForeignKey(Article, on_delete=models.CASCADE)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.date
