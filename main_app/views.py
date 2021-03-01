@@ -28,6 +28,13 @@ def add_comment(request, article_id):
     new_comment.save()
   return redirect('articles_detail', article_id = article_id)
 
+
+def delete_comment(request, article_id):
+  Article.objects.get(pk=1).delete()
+  return redirect('articles_detail', article_id = article_id)
+
+
+
 class CreateArticle(CreateView):
   model = Article
   fields = '__all__'
