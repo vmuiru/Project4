@@ -29,8 +29,8 @@ class Comment(models.Model):
 
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.date
+    # def __str__(self):
+    #     return self.date
     
     class Meta:
         ordering = ['-date']

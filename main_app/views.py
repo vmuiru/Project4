@@ -28,6 +28,15 @@ def add_comment(request, article_id):
     new_comment.save()
   return redirect('articles_detail', article_id = article_id)
 
+
+def delete_comment(request, article_id):
+  article = Article.objects.get(id=article_id)
+  form = CommentForm(request.DELETE)
+  Article.objects.get(pk=article_id).delete()
+
+  return redirect('articles_detail', article_id = article_id)
+
+
 class CreateArticle(CreateView):
   model = Article
   fields = '__all__'
