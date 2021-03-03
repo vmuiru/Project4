@@ -17,15 +17,15 @@
       </button>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      {% if user.is_authenticated %}
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item acitve">
           <a  style='font-size: 35px;' class="nav-link" href="{% url 'home' %}">Home</a>
         </li>
-
+        
         <li class="nav-item">
           <a style='font-size: 35px;' class="nav-link" href="{% url 'about' %}">About</a>
         </li>
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a style='font-size: 35px;' class="nav-link" href="{% url 'articles_index' %}">Articles</a>
         </li>
