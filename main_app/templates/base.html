@@ -21,18 +21,28 @@
         <li class="nav-item acitve">
           <a  style='font-size: 35px;' class="nav-link" href="{% url 'home' %}">Home</a>
         </li>
+
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a style='font-size: 35px;' class="nav-link" href="{% url 'about' %}">About</a>
         </li>
         <li class="nav-item">
           <a style='font-size: 35px;' class="nav-link" href="{% url 'articles_index' %}">Articles</a>
         </li>
-      </ul>
+     
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
-    </div>
+      <li class="nav-item">
+        <a style='font-size: 35px;' class="nav-link" href="{% url 'logout' %}">Log Out</a>
+      </li>
+    {% else %}
+    <li class="nav-item">
+      <a style='font-size: 35px;' class="nav-link" href="{% url 'login' %}">Log In</a>
+    </li>
+  {% endif %}
+    </ul>
   </nav>
   
   <main class='container' >

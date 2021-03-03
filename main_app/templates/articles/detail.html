@@ -16,14 +16,14 @@
         </thead>
         <tbody>
           {% for comment in article.comment_set.all %}
-          {% csrf_token %}
           <tr>
-          </form action="{% url 'delete_comment' article.id %}" method="DELETE">
+            <form action="{% url 'delete_comment' article.id %}" method="POST">
+              {% csrf_token %}
               <td>{{comment.date}}</td>
               <td>{{comment.content}}</td>
-            </tr>
-            <input type="submit" value="DELETE" class='btn-outline-dark'/>
-
+              <input type="submit" value="DELETE" class='btn-outline-dark'/>
+            </form>    
+          </tr>
           {% endfor %}
         </tbody>
       </table>

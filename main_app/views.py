@@ -31,7 +31,7 @@ def add_comment(request, article_id):
 
 def delete_comment(request, article_id):
   article = Article.objects.get(id=article_id)
-  form = CommentForm(request.DELETE)
+  # form = CommentForm(request.POST)
   Article.objects.get(pk=article_id).delete()
 
   return redirect('articles_detail', article_id = article_id)
