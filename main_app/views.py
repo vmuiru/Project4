@@ -48,7 +48,8 @@ def delete_comment(request, article_id, comment_id):
 
 class CreateArticle(LoginRequiredMixin, CreateView):
   model = Article
-  fields = '__all__'
+  fields = ['short_title', 'long_title', 'author', 'publication', 'content']
+
 
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -57,7 +58,7 @@ class CreateArticle(LoginRequiredMixin, CreateView):
 
 class ArticleUpdate(LoginRequiredMixin, UpdateView):
   model = Article
-  fields = ['content']
+  fields = ['short_title', 'long_title', 'author', 'publication', 'content']
 
 class ArticleDelete(LoginRequiredMixin, DeleteView):
   model = Article
