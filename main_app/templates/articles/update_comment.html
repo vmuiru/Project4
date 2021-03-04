@@ -1,0 +1,14 @@
+{% extends '../base.html' %}
+
+{% block content %}
+  
+    <h1>Edit <span class='teal-text'>{{object.name}}</span></h1>
+   
+    <form action="{% url 'update_comment' article.id comment.id %}" method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input type='submit' value='Update' class='btn'/>
+    </form>
+{% endblock %}

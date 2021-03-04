@@ -37,13 +37,33 @@ def add_comment(request, article_id):
 @login_required
 def delete_comment(request, article_id, comment_id):
   new_comment = Comment.objects.get(id=comment_id)
-  new_comment.article_id = article_id
+  # new_comment.article_id = article_id
   new_comment.delete()
   # form = CommentForm(request.POST)
   # if request.method == 'POST':
   #   new_comment
 
   return redirect('articles_detail', article_id = article_id)
+
+def update_comment(request):
+  # update_comment = Comment.objects.get(id=comment_id)
+  return render(request, 'articles/update_comment.html')
+  # return render(request, 'articles/update_comment.html', { 'articles': articles })
+  # form = CommentForm(request.POST)
+  # if form.is_valid():
+  #   newer_comment = form.save(commit=False)
+  #   newer_comment.article_id = article_id
+  #   newer_comment.save()
+  # return redirect('articles_detail', article_id = article_id)
+  # # { 'articles': articles }
+
+  # new_comment.delete()
+  # # form = CommentForm(request.POST)
+  # # if request.method == 'POST':
+  # #   new_comment
+
+  return redirect('articles_detail', article_id = article_id)
+
 
 
 class CreateArticle(LoginRequiredMixin, CreateView):
