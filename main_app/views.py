@@ -35,17 +35,17 @@ def add_comment(request, article_id):
   return redirect('articles_detail', article_id = article_id)
 
 @login_required
-def delete_comment(request, article_id):
-  article = Article.objects.get(id=article_id)
-  # form = CommentForm(request.POST)
-  Article.objects.get(pk=article_id).delete()
-
-  return redirect('articles_detail', article_id = article_id)
+def delete_comment(request, comment_id):
+  del_comment = Comment.objects.get(id=id).delete()
+  if request.method=='POST':
+    del_comment
+  return redirect('articles_index')
 
 
 class CreateArticle(LoginRequiredMixin, CreateView):
   model = Article
-  fields = '__all__'
+  fields = ['short_title', 'long_title', 'author', 'publication', 'content']
+
 
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -54,7 +54,7 @@ class CreateArticle(LoginRequiredMixin, CreateView):
 
 class ArticleUpdate(LoginRequiredMixin, UpdateView):
   model = Article
-  fields = ['content']
+  fields = ['short_title', 'long_title', 'author', 'publication', 'content']
 
 class ArticleDelete(LoginRequiredMixin, DeleteView):
   model = Article
