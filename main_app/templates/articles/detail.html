@@ -23,6 +23,7 @@
               <td>{{comment.content}}</td>
               <input type="submit" value="DELETE" class='btn-outline-dark'/>
             </form>    
+            <a class="btn btn-outline-dark" href="{% url 'update_comment' %}"" role="button">EDIT</a>
           </tr>
           {% endfor %}
         </tbody>
@@ -30,10 +31,7 @@
       
      
     
-     
-
-
-
+  
 
 {% endblock %}
 
