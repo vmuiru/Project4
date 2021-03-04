@@ -35,10 +35,13 @@ def add_comment(request, article_id):
   return redirect('articles_detail', article_id = article_id)
 
 @login_required
-def delete_comment(request, article_id):
-  article = Article.objects.get(id=article_id)
+def delete_comment(request, article_id, comment_id):
+  new_comment = Comment.objects.get(id=comment_id)
+  new_comment.article_id = article_id
+  new_comment.delete()
   # form = CommentForm(request.POST)
-  Article.objects.get(pk=article_id).delete()
+  # if request.method == 'POST':
+  #   new_comment
 
   return redirect('articles_detail', article_id = article_id)
 
