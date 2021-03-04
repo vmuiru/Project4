@@ -17,7 +17,7 @@
         <tbody>
           {% for comment in article.comment_set.all %}
           <tr>
-            <form action="{% url 'delete_comment' article.id %}" method="POST">
+            <form action="{% url 'delete_comment' article.id comment.id %}" method="POST">
               {% csrf_token %}
               <td>{{comment.date}}</td>
               <td>{{comment.content}}</td>

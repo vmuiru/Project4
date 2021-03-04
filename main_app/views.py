@@ -35,11 +35,15 @@ def add_comment(request, article_id):
   return redirect('articles_detail', article_id = article_id)
 
 @login_required
-def delete_comment(request, comment_id):
-  del_comment = Comment.objects.get(id=id).delete()
-  if request.method=='POST':
-    del_comment
-  return redirect('articles_index')
+def delete_comment(request, article_id, comment_id):
+  new_comment = Comment.objects.get(id=comment_id)
+  new_comment.article_id = article_id
+  new_comment.delete()
+  # form = CommentForm(request.POST)
+  # if request.method == 'POST':
+  #   new_comment
+
+  return redirect('articles_detail', article_id = article_id)
 
 
 class CreateArticle(LoginRequiredMixin, CreateView):
