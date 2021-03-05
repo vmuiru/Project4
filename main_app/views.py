@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Article, Comment
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .forms import CommentForm
+from .forms import CommentForm, UpdateCommentForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -23,6 +23,7 @@ def articles_index(request):
 def articles_detail(request, article_id):
   article = Article.objects.get(id=article_id)
   comment_form = CommentForm()
+  all_comments = Comment.objects.filter(id=article_id)
   return render(request, 'articles/detail.html', {'article': article, 'comment_form': comment_form})
 
 @login_required
@@ -42,29 +43,23 @@ def delete_comment(request, article_id, comment_id):
   # form = CommentForm(request.POST)
   # if request.method == 'POST':
   #   new_comment
-
   return redirect('articles_detail', article_id = article_id)
 
-def update_comment(request):
-  # update_comment = Comment.objects.get(id=comment_id)
-  return render(request, 'articles/update_comment.html')
-  # return render(request, 'articles/update_comment.html', { 'articles': articles })
-  # form = CommentForm(request.POST)
-  # if form.is_valid():
-  #   newer_comment = form.save(commit=False)
-  #   newer_comment.article_id = article_id
-  #   newer_comment.save()
-  # return redirect('articles_detail', article_id = article_id)
-  # # { 'articles': articles }
+@login_required
+def update_comment(request, pk, comment_id):
+  object = Comment.objects.filter(Comment, pk)
 
-  # new_comment.delete()
-  # # form = CommentForm(request.POST)
-  # # if request.method == 'POST':
-  # #   new_comment
-
-  return redirect('articles_detail', article_id = article_id)
-
-
+  if request.method == 'POST':
+    form = UpdateCommentForm(instance=object, data=request.POST)
+    if form.is_valid():
+      form.save()
+  else:
+    form = UpdateCommentForm(instance=object)
+  return render(request, update_comment, {
+    'object': object,
+    'form': form,
+  })
+    
 
 class CreateArticle(LoginRequiredMixin, CreateView):
   model = Article
