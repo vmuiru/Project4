@@ -26,10 +26,13 @@
               </form>   
             </td> 
             <td>
-              <form action="{% url 'update_comment' article.id comment.id %}" method="POST">
-                {{  updatecomment_form.as_p  }}
+              <button type='submit' value='Edit Comment' action="{% url 'edit_comment' article.id comment.id %}" method='POST'>
+                </button>
+                <form action="{% url 'update_comment' article.id comment.id %}" method="POST">
+                {{  comment_form.as_p  }}
                 {% csrf_token %}
-                <input type="submit" value="EDIT" class='btn-outline-dark'/>
+                <!-- add button to execute function with dropdown to update the template -->
+                <input type="submit" value="Update Comment" class='btn-outline-dark'/>
               </form>   
             </td> 
           </tr>
@@ -38,4 +41,11 @@
       </table>
       
 {% endblock %}
+
+<!-- <script>
+
+// var selectEl = document.getElementById('edit');
+
+
+</script> -->
 
