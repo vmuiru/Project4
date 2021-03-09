@@ -14,7 +14,7 @@ class Article(models.Model):
     # author = models.CharField(max_length=150)
     # content = models.TextField(max_length=1000)
     
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.short_title and self.author
