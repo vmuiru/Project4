@@ -32,6 +32,7 @@ def add_comment(request, article_id):
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.article_id = article_id
+    # new_comment.update('content')
     new_comment.save()
   return redirect('articles_detail', article_id = article_id)
 
@@ -46,19 +47,43 @@ def delete_comment(request, article_id, comment_id):
   return redirect('articles_detail', article_id = article_id)
 
 @login_required
-def update_comment(request, pk, comment_id):
-  object = Comment.objects.filter(Comment, pk)
+def update_comment(request, comment_id, article_id):
+  # edit_comment = Comment.objects.filter(id=comment_id)
+  # edit_comment.update()
+  # return redirect('articles_detail', article_id = article_id)
+  # object = Comment.objects.get()
+  # article = Article.objects.filter(id=article_id)
+  
+  
+  
+  edit_form = CommentForm(request.POST)
+  if edit_form.is_valid():
+    # new_comment.comment_id = comment_id
+    new_comment = Comment.objects.get(id=comment_id)
+    
+    
+    new_comment = edit_form.save(commit=False)
+    new_comment = Comment.objects.filter(id=comment_id).update(content = str(new_comment.content))
+    print(new_comment)
+    # new_comment.update()
+    
+    # print(comment_id)
+    # print(new_comment.content)
+    # print(new_comment.date)
+   
+    # new_comment.save()
+      
+  # else:
+  #   form = UpdateCommentForm(instance=object)
+    # return redirect('update_comment', article_id = article_id)
+  
+  return redirect('articles_detail', article_id = article_id)
 
-  if request.method == 'POST':
-    form = UpdateCommentForm(instance=object, data=request.POST)
-    if form.is_valid():
-      form.save()
-  else:
-    form = UpdateCommentForm(instance=object)
-  return render(request, update_comment, {
-    'object': object,
-    'form': form,
-  })
+def edit_comment(request, article_id, comment_id):
+  new_comment = Comment.objects.get(id=comment_id)
+  edit_form = UpdateCommentForm()
+  return redirect('articles_detail', article_id = article_id)
+
     
 
 class CreateArticle(LoginRequiredMixin, CreateView):
