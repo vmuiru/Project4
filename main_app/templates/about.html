@@ -1,8 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
 
 <h1>Your News Is Good News</h1>
-
+<div class="card" style="width: 18rem;">
+    <img src="{{news_data.url_to_image}}" class="card-img-top" alt="New Picture">
+    <div class="card-body">
+      <h5 class="card-title">{{news_data.title}}</h5>
+      <p class="card-text">{{news_data.content}}</p>
+    </div>
+    <!-- <ul class="list-group list-group-flush">
+        
+      <li class="list-group-item">{{news_data.description}}</li>
+      <li class="list-group-item">{{news_data.description}}</li> -->
+      
+      
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+  
+    <div class="card-footer">
+      <small class="text-muted">Written by: Grant</small>
+    </div>
+  </div>
 
 {% endblock %}
