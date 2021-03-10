@@ -50,8 +50,8 @@
             <input class="form-control mr-sm-2" type="search" placeholder="">
             <i class="fal fa-search"></i>
           </form>
-          <button class="btn mr-2 my-2 my-sm-0" type="submit">Login</button>
-          <button class="btn btn-signup ml-2 my-2 my-sm-0" type="submit">Sign Up</button>
+          <a class="btn mr-2 my-2 my-sm-0" href="{% url 'login' %}" role="button"> Login</a>
+          <a class="btn btn-signup ml-2 my-2 my-sm-0" href="{% url 'signup' %}" role="button" >Sign Up</a>
         </div>
       </nav> 
     </div>
@@ -70,9 +70,7 @@
         <div class="col-lg-10 col-md-9 col-sm-8 col-12">
           <p class="d-flex justify-content-center align-items-center">
             <span class="me-3">Register for free today!</span> &nbsp;&nbsp;
-            <button type="button" class="btn btn-outline-light btn-rounded">
-              Sign up!
-            </button>
+            <a class="btn btn-outline-light btn-rounded" href="{% url 'signup' %}" role="button">Sign Up!</a>
           </p>
         </div>
       </div>
