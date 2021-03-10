@@ -27,11 +27,12 @@ class Article(models.Model):
 class Comment(models.Model):
     content = models.CharField(max_length=250)
     date = models.DateField('date of comment')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
+    article = models.ForeignKey(
+        Article, related_name='comments', on_delete=models.CASCADE)
 
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)
-
-    # def __str__(self):
-    #     return self.date
+    def __str__(self):
+        return str(self.author)
     
     class Meta:
         ordering = ['-date']
