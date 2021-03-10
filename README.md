@@ -21,16 +21,17 @@ ToDo
 
 
 ## Features
-- Users can:
-  - see a responsive nav-bar upon entering the site
-  - have the option to login from the nav bar as a returning user
-  - see the option to sign up and are able to sign-up (page)
-  - see top articles on the homepage (favorites, stretch goal)
-  - navigate to article’s details page, from homepage and perform CRUD on an article
-  - see all my articles (favorited and non-favorited) and their respective # comment
-  - click the comments link and see all the comments from various users
-  - perform CRUD on a comment
-  - logout then be redirected to homepage, which contains login. 
+Users can:
+- see a responsive nav-bar upon entering the site
+  -  nav-bar contains "home", "articles", "about", a search bar for articles, login, and signup buttons
+- perform CRUD on a comment
+- add an article from the news API
+- perform CRUD on an external article (outside of the API)
+- view all their articles on their "home" page
+  - navigate to article's full details page by clicking on the article
+    - this includes the comments user leaves on an article
+- click the comments link and see all the comments from various users
+- logout and be redirected to a page which shows limited app information 
 
 
 ## Getting Started:
@@ -41,5 +42,5 @@ ToDo - (put app link here)
 
 
 ## Stretch Goals
-- Add in News API details.
-    - currently User has to manually enter article details into form.
+- give user the ability to "Favorite" articles
+  - have favorited articles render on "home" page
