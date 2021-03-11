@@ -46,8 +46,10 @@
               <a class="nav-link mr-2" href="{% url 'about' %}">About</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="">
+          <form class="form-inline my-2 my-lg-0" method="POST">
+            {% csrf_token %}
+            {{ form.name }}
+            <button type="submit" value="Search">Search</button>
             <i class="fal fa-search"></i>
           </form>
           <a class="btn mr-2 my-2 my-sm-0" href="{% url 'login' %}" role="button"> Login</a>
