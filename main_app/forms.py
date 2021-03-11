@@ -7,7 +7,3 @@ class CommentForm(ModelForm):
         model = Comment
         fields = ['content', 'date']
 
-class UpdateCommentForm (ModelForm):
-    class Meta:
-        model = Comment
-        fields = ['content', 'date']
