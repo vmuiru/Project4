@@ -6,88 +6,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    
-
-    <!-- External Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
-    
-
-    <!-- Local Stylesheet -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-    <!-- Local Javascript -->
-    
-
-    <title>Bespoke</title>
+    <title>News Flow</title>
 </head>
 <body>
-  <header>
-    <div class="container-fluid">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-        <a class="navbar-brand" href="/">Bespoke</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+<nav style='height:100px;' class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a style='font-size: 65px;'class="navbar-brand" href="/">BespokeNews</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item acitve">
-              <a class="nav-link mr-2" href="{% url 'home' %}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link mr-2" href="{% url 'articles_index' %}">Articles</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link mr-2" href="{% url 'about' %}">About</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="">
-            <i class="fal fa-search"></i>
-          </form>
-          <a class="btn mr-2 my-2 my-sm-0" href="{% url 'login' %}" role="button"> Login</a>
-          <a class="btn btn-signup ml-2 my-2 my-sm-0" href="{% url 'signup' %}" role="button" >Sign Up</a>
-        </div>
-      </nav> 
-    </div>
-</header>
-<main class='container-fluid'>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item acitve">
+          <a  style='font-size: 35px;' class="nav-link" href="{% url 'home' %}">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a style='font-size: 35px;' class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+        <li class="nav-item">
+          <a style='font-size: 35px;' class="nav-link" href="{% url 'articles_index' %}">Articles</a>
+        </li>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <li class="nav-item">
+        <a style='font-size: 35px;' class="nav-link" href="{% url 'logout' %}">Log Out</a>
+      </li>
+    {% else %}
+    <li class="nav-item">
+      <a style='font-size: 35px;' class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+    </li>
+    <li class="nav-item">
+      <a style='font-size: 35px;' class="nav-link" href="{% url 'login' %}">Log In</a>
+    </li>
+  {% endif %}
+    </ul>
+  </nav>
+  
+  <main class='container' >
     {% block content %}
     
     {% endblock %}
 </main>
-<footer class="text-center">
-    <div class="container pb-0">
-      <div class="row">
-        <div class="col-lg-2 col-md-3 col-sm-4 col-12 text-left">
-          <a class="navbar-brand" href="/">Bespoke</a>
-        </div>
-        <div class="col-lg-10 col-md-9 col-sm-8 col-12">
-          <p class="d-flex justify-content-center align-items-center">
-            <span class="me-3">Register for free today!</span> &nbsp;&nbsp;
-            <a class="btn btn-outline-light btn-rounded" href="{% url 'signup' %}" role="button">Sign Up!</a>
-          </p>
-        </div>
-      </div>
-      <div class="row ">
-        <div class="col-lg-2 col-md-3 col-sm-4 col-12 text-center d-flex flex-start">
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-        </div>
-        <div class="text-center col-lg-10 col-md-9 col-sm-8 col-12">
-          &copy; <span id="year"></span> Bespoke. All Rights Reserved.
-        </div>
-      </div>
-    </div>
-</footer>
 
-    <script src="{% static 'js/script.js'%}"></script>
+
+
+<footer class="text-center text-white bg-primary" >
+    <div class="container p-4 pb-0">
+      <section class="">
+        <p class="d-flex justify-content-center align-items-center">
+          <span class="me-3">Register for free</span>
+          
+          <a class="btn btn-outline-light btn-rounded" href="{% url 'signup' %}"" role="button">Sign Up!</a>
+         
+      </section>
+      </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright: Elaine, Akeem, Grant, Victoria!
+      </div>
+    </footer>
 </body>
 </html>
