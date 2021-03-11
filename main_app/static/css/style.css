@@ -2,8 +2,164 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background: #FFFFFF;
   }
+
+  header {
+    background: #FFFFFF;
+  }
+
+
   main {
     flex: 1 0 auto;
   }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+  }
+
+  .navbar {
+    margin: 0px 0px;
+    border-bottom: 1px solid #EDEDED;
+  }
+
+.container-fluid {
+  max-width: 1220px !important;
+}
+
+.navbar-brand {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1.25rem;
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
   
+.nav-link {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1rem;
+  color: #000000 !important;
+  font-weight: normal;
+}
+
+.navbar .btn {
+  color: #000000;
+  background: transparent;
+  font-weight: 600;
+}
+
+.navbar .btn-signup {
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 0px !important;
+  padding: 16px 24px;
+  border-left: 1px solid #000;
+  font-weight: 600;
+}
+
+.banner {
+  margin: 40px 0px;
+}
+
+.banner .font-change {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.banner h1, h6{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.banner h6  {
+
+}
+
+.form-inline i {
+  position: absolute;
+  margin: 0px 0px 0px 200px;
+}
+
+.form-inline input {
+  padding: 5px 40px 5px 20px;
+  border: 1px solid #E7E7E7; 
+  background: transparent;
+  border-radius: 0px;
+}
+
+footer {
+  background: #000 !important;
+  color: #FFF !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500;
+  padding: 40px 0px;
+}
+
+footer .navbar-brand {
+  color: #FFF !important;
+  margin: 0px;
+}
+
+footer i {
+  color: #FFF !important;
+  font-size: 16px;
+  margin: 0px 20px 0px 0px;
+}
+
+.card {
+  border: 1px solid #E7E7E7;
+  border-radius: 10px !important;
+  background: transparent;
+}
+
+.card-img-top {
+  width: 100%;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 500;
+}
+
+.add-article-row {
+  margin: 40px auto;
+}
+
+.add-article {
+  background: #000;
+  color: #FFF;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 0px !important;
+  padding: 16px 24px;
+}
+
+.add-article:hover {
+  color: #FFF;
+}
+
+.about-wrapper {
+  margin: 80px auto;
+}
+
+.about-wrapper h1{
+  font-size: 4.25rem;
+  font-weight: 800;
+}
+
+.team-section {
+  margin: 180px auto;
+}
+
+.first-team-row {
+
+}
+
+.second-team-row {
+  margin-top: 80px;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 100%; 
+  }
+}
