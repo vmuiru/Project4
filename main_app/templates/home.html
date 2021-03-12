@@ -11,6 +11,25 @@
       <h6>Curating the best shit just for you since 2021.</h6>
     </div>
   </div>
+  <div class="row pb-4 d-flex">
+    {% for news_data in category_data %}
+      <div class="col-sm-4 col-12 mt-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="{{news_data.url_to_image}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{news_data.title}}</h5>
+            <p class="card-text">{{news_data.description}}</p>
+          </div>
+          <!-- 
+          <div class="card-footer">
+            <small class="text-muted">Written by: {{news_data.author}}</small>
+          </div>
+          -->
+        </div>
+      </div>
+    
+    {% endfor %} 
+  </div>
 </div>
 
     <div class="row pb-4 content">

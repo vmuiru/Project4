@@ -6,39 +6,39 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-import requests
+import requests 
 
 def home(request):
-  url = 'https://newsapi.org/v2/everything?q={}&apiKey=0fc74fe908d8477487c894869fc5e7b4'
-  category = 'soccer'
+  # url = 'https://newsapi.org/v2/everything?q={}&apiKey=0fc74fe908d8477487c894869fc5e7b4'
+  # category = 'soccer'
   
-  # r = r['articles']
-  new_category = Category.objects.all()
+  # # r = r['articles']
+  # new_category = Category.objects.all()
 
-  category_data=[]
+  # category_data=[]
 
-  for category in new_category:
-    r = requests.get(url.format(category)).json()
-  # for i in news_data:
-  # news_data = {
-  #     'title': r['articles'] ,
-  #     'description' : r['articles']['description'] ,
-  #     'content': r['articles']['content'] ,
-  #     'url_to_image': r['articles']['urlToImage'],
+  # for category in new_category:
+  #   r = requests.get(url.format(category)).json()
+  # # for i in news_data:
+  # # news_data = {
+  # #     'title': r['articles'] ,
+  # #     'description' : r['articles']['description'] ,
+  # #     'content': r['articles']['content'] ,
+  # #     'url_to_image': r['articles']['urlToImage'],
+  # # }
+  
+  #   news_data = {
+  #       'category': category.name,
+  #       'title': r['articles'][0]['title'],
+  #       'description' : r['articles'][0]['description'],
+  #       'content': r['articles'][0]['content'],
+  #       'url_to_image': r['articles'][0]['urlToImage'],
   # }
-  
-    news_data = {
-        'category': category.name,
-        'title': r['articles'][0]['title'] ,
-        'description' : r['articles'][0]['description'] ,
-        'content': r['articles'][0]['content'] ,
-        'url_to_image': r['articles'][0]['urlToImage'],
-  }
-    category_data.append(news_data)
+  #   category_data.append(news_data)
 
 
-  context = {'category_data' : category_data}
-  return render(request,'home.html', context)
+  # context = {'category_data' : category_data}
+  return render(request,'home.html')
 
 def about(request):
   

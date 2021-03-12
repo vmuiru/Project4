@@ -4,27 +4,39 @@
 
 <h1>Your Good News Details</h1>
 
-    <form action="{% url 'add_comment' article.id %}" method="post">
-    {% csrf_token %}
-    {{  comment_form.as_p  }}
-    <input type="submit" value="Add Comment" class='btn-outline-dark'/>
-    </form>
-
-    <table class="striped">
+<form action="{% url 'add_comment' article.id %}" method="post">
+  {% csrf_token %}
+  {{  comment_form.as_p  }}
+  <input type="submit" value="Add Comment" class='btn-outline-dark'/>
+  </form>
+  <table class="striped">
+      <thead>
+        <tr><th>Date</th><th>Content</th></tr>
+      </thead>
       <tbody>
-        <thead>
-          <tr><th>Date</th><th>Content</th></tr>
-        </thead>
-          {% for comment in article.comment_set.all %}
-          <tr>
-          <form action="{% url 'delete_comment' article.id %}" method="POST">
-              <td>{{comment.date}}</td>
-              <td>{{comment.content}}</td>
-            <input type="submit" value="DELETE" class='btn-outline-dark'/>
-          </form>
-          </tr>
-          {% endfor %}
-        </tbody>
+        {% for comment in article.comment_set.all %}
+        <tr>
+          <td>{{comment.date}}</td>
+          <td>{{comment.content}}</td>
+          <td>
+            <form action="{% url 'delete_comment' article.id comment.id %}" method="POST">
+              {% csrf_token %}
+              <input type="submit" value="DELETE" class='btn-outline-dark'/>
+            </form>   
+          </td> 
+          <td>
+            <button type='submit' value='Edit Comment' action="{% url 'edit_comment' article.id comment.id %}" method='POST'>
+              </button>
+              <form action="{% url 'update_comment' article.id comment.id %}" method="POST">
+              {{  comment_form.as_p  }}
+              {% csrf_token %}
+              <!-- add button to execute function with dropdown to update the template -->
+              <input type="submit" value="Update Comment" class='btn-outline-dark'/>
+            </form>   
+          </td> 
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
       
 {% endblock %}

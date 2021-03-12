@@ -33,7 +33,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
+          {% if user.is_authenticated %}
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item acitve">
@@ -45,13 +45,21 @@
             <li class="nav-item">
               <a class="nav-link mr-2" href="{% url 'about' %}">About</a>
             </li>
+            <form class="form-inline my-2 my-lg-0" method="POST">
+              {% csrf_token %}
+              {{ form.name }}
+              <i class="fal fa-search"></i>
+              <input class="form-control mr-sm-2" type="search" placeholder="">
+              <button type="submit" value="Search">Search</button>
+            </form>
+            <li class="nav-item">
+              <a class="btn mr-2 my-2 my-sm-0" href="{% url 'logout' %}" role="button"> Log Out</a>
+            </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="">
-            <i class="fal fa-search"></i>
-          </form>
+        {% else %}
           <a class="btn mr-2 my-2 my-sm-0" href="{% url 'login' %}" role="button"> Login</a>
           <a class="btn btn-signup ml-2 my-2 my-sm-0" href="{% url 'signup' %}" role="button" >Sign Up</a>
+        {% endif %}
         </div>
       </nav> 
     </div>
