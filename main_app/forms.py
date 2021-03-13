@@ -11,7 +11,7 @@ class CommentForm(ModelForm):
 class UpdateCommentForm (ModelForm):
     class Meta:
         model = Comment
-        fields = ['content', 'date']
+        fields = ['content']
 
 class CategoryForm (ModelForm):
     class Meta:

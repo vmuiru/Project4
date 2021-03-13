@@ -98,8 +98,9 @@ def articles_index(request):
 def articles_detail(request, article_id):
   article = Article.objects.get(id=article_id)
   comment_form = CommentForm()
+  update_form = UpdateCommentForm()
   all_comments = Comment.objects.filter(id=article_id)
-  return render(request, 'articles/detail.html', {'article': article, 'comment_form': comment_form})
+  return render(request, 'articles/detail.html', {'article': article, 'comment_form': comment_form, 'update_form': update_form})
 
 @login_required
 def add_comment(request, article_id):
@@ -131,7 +132,7 @@ def update_comment(request, comment_id, article_id):
   
   
   
-  edit_form = CommentForm(request.POST)
+  edit_form = UpdateCommentForm(request.POST)
   if edit_form.is_valid():
     # new_comment.comment_id = comment_id
     new_comment = Comment.objects.get(id=comment_id)
