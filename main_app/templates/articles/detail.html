@@ -28,7 +28,7 @@
             <button type='submit' value='Edit Comment' action="{% url 'edit_comment' article.id comment.id %}" method='POST'>
               </button>
               <form action="{% url 'update_comment' article.id comment.id %}" method="POST">
-              {{  comment_form.as_p  }}
+              {{  update_form.as_p  }}
               {% csrf_token %}
               <!-- add button to execute function with dropdown to update the template -->
               <input type="submit" value="Update Comment" class='btn-outline-dark'/>
