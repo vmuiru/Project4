@@ -48,9 +48,12 @@
             <form class="form-inline my-2 my-lg-0" method="POST">
               {% csrf_token %}
               {{ form.name }}
-              <i class="fal fa-search"></i>
-              <!-- <input class="form-control mr-sm-2" type="search" placeholder=""> -->
-              <button type="submit" value="Search">Search</button>
+              
+              <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search"> -->
+              <i>
+            
+              <!-- <button type="submit" value="Search">Search</button> class="fal fa-search"-->
+              </i>
             </form>
             <li class="nav-item">
               <a class="btn mr-2 my-2 my-sm-0" href="{% url 'logout' %}" role="button"> Log Out</a>
