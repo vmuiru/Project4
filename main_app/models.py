@@ -10,9 +10,6 @@ class Article(models.Model):
     author = models.CharField('author(s)',   max_length=150)
     publication = models.CharField('published in: ', max_length=150)
     content = models.TextField(max_length=1000)
-    # title = models.CharField(max_length=150)
-    # author = models.CharField(max_length=150)
-    # content = models.TextField(max_length=1000)
     
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -29,6 +26,8 @@ class Comment(models.Model):
     date = models.DateField('date of comment')
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     
+
+
     class Meta:
         ordering = ['-date']
 

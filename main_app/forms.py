@@ -1,5 +1,6 @@
-from django.forms import ModelForm
-from .models import Comment
+from django.forms import ModelForm, TextInput
+from .models import Comment, Category
+
 
 
 class CommentForm(ModelForm):
@@ -11,3 +12,8 @@ class UpdateCommentForm (ModelForm):
     class Meta:
         model = Comment
         fields = ['content', 'date']
+
+class CategoryForm (ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name']
