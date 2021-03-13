@@ -25,12 +25,11 @@ Users can:
 - see a responsive nav-bar upon entering the site
   -  nav-bar contains "home", "articles", "about", a search bar for articles, login, and signup buttons
 - perform CRUD on a comment
-- add an article from the news API
+- add an article from the news API using category-search
 - perform CRUD on an external article (outside of the API)
 - view all their articles on their "home" page
   - navigate to article's full details page by clicking on the article
     - this includes the comments user leaves on an article
-- click the comments link and see all the comments from various users
 - logout and be redirected to a page which shows limited app information 
 
 
