@@ -6,10 +6,11 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-import requests
-from .forms import CategoryForm
+import requests 
 
 def home(request):
+  # url = 'https://newsapi.org/v2/everything?q={}&apiKey=0fc74fe908d8477487c894869fc5e7b4'
+  # category = 'soccer'
   # url = 'https://newsapi.org/v2/everything?q={}&apiKey=0fc74fe908d8477487c894869fc5e7b4'
   # if request.method == 'POST':
   #   form = CategoryForm(request.POST)
@@ -17,6 +18,7 @@ def home(request):
   # form = CategoryForm()
 
   # # category = 'soccer'
+
   
   # # r = r['articles']
   # new_category = Category.objects.all()
@@ -35,15 +37,18 @@ def home(request):
   
   #   news_data = {
   #       'category': category.name,
+  #       'title': r['articles'][0]['title'],
+  #       'description' : r['articles'][0]['description'],
+  #       'content': r['articles'][0]['content'],
   #       'title': r['articles'][0]['title'] ,
   #       'description' : r['articles'][0]['description'] ,
   #       'content': r['articles'][0]['content'] ,
   #       'url_to_image': r['articles'][0]['urlToImage'],
   # }
   #   category_data.append(news_data)
-
-
+  # context = {'category_data' : category_data}
   # context = {'category_data' : category_data, 'form': form}
+
   return render(request,'home.html')
 
 def about(request):
