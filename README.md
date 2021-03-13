@@ -38,7 +38,7 @@ Users can:
 #### Trello
 https://trello.com/b/fCL5v84g/project4
 #### Heroku 
-ToDo - (put app link here)
+http://bespokenews.herokuapp.com/
 
 
 ## Stretch Goals
