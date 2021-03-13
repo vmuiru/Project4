@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Article, Comment, Category
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .forms import CommentForm, UpdateCommentForm
+from .forms import CommentForm, UpdateCommentForm, CategoryForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -9,24 +9,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 import requests 
 
 def home(request):
-  # url = 'https://newsapi.org/v2/everything?q={}&apiKey=0fc74fe908d8477487c894869fc5e7b4'
-  # category = 'soccer'
-  # url = 'https://newsapi.org/v2/everything?q={}&apiKey=0fc74fe908d8477487c894869fc5e7b4'
-  # if request.method == 'POST':
-  #   form = CategoryForm(request.POST)
-  #   form.save()
-  # form = CategoryForm()
+  
+  url = 'https://newsapi.org/v2/everything?q={}&apiKey=0fc74fe908d8477487c894869fc5e7b4'
+  if request.method == 'POST':
+    form = CategoryForm(request.POST)
+    form.save()
+  form = CategoryForm()
 
   # # category = 'soccer'
 
   
   # # r = r['articles']
-  # new_category = Category.objects.all()
+  new_category = Category.objects.all()
 
-  # category_data=[]
+  category_data=[]
 
-  # for category in new_category:
-  #   r = requests.get(url.format(category)).json()
+  for category in new_category:
+    r = requests.get(url.format(category)).json()
   # # for i in news_data:
   # # news_data = {
   # #     'title': r['articles'] ,
@@ -35,21 +34,18 @@ def home(request):
   # #     'url_to_image': r['articles']['urlToImage'],
   # # }
   
-  #   news_data = {
-  #       'category': category.name,
-  #       'title': r['articles'][0]['title'],
-  #       'description' : r['articles'][0]['description'],
-  #       'content': r['articles'][0]['content'],
-  #       'title': r['articles'][0]['title'] ,
-  #       'description' : r['articles'][0]['description'] ,
-  #       'content': r['articles'][0]['content'] ,
-  #       'url_to_image': r['articles'][0]['urlToImage'],
-  # }
-  #   category_data.append(news_data)
+    news_data = {
+        'category': category.name,
+        'title': r['articles'][0]['title'] ,
+        'description' : r['articles'][0]['description'] ,
+        'content': r['articles'][0]['content'] ,
+        'url_to_image': r['articles'][0]['urlToImage'],
+  }
+    category_data.append(news_data)
   # context = {'category_data' : category_data}
-  # context = {'category_data' : category_data, 'form': form}
+  context = {'category_data' : category_data, 'form': form}
 
-  return render(request,'home.html')
+  return render(request,'home.html', context)
 
 def about(request):
   

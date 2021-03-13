@@ -32,7 +32,7 @@
   </div>
 </div>
 
-    <div class="row pb-4 content">
+    <!-- <div class="row pb-4 content"> -->
       <!-- <div class="col-sm-4 col-12">
         <div class="card">
           <img class="card-img-top" src="{% static 'APNews.jpg' %}" alt="Card image cap">
@@ -87,28 +87,8 @@
           </div>
         </div>
       </div> -->
-      <div class="col-sm-4 col-12">
-        <div class="card">
-          {% for news_data in category_data %}
-          <img class="card-img-top" src="{{news_data.url_to_image}}" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text"><small class="text-muted">By Akeem Dainty</small></p>
-            <h5 class="card-title">{{news_data.title}}</h5>
-            <p class="card-text">{{news_data.content}}</p>
-            <p class=“card-text”>{{news_data.description}}</p>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-      <div>
-        
-        
-            <!-- <ul class=“list-group list-group-flush”>
-              <li class=“list-group-item”>{{news_data.description}}</li>
-              <li class=“list-group-item”>{{news_data.description}}</li> -->
-           
-  
-      </div>
-    </div>
+      
+      
+    
     
 {% endblock %}
