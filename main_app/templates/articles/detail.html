@@ -2,43 +2,70 @@
 
 {% block content %}
 
-<h1>Your Good News Details</h1>
 
-<form action="{% url 'add_comment' article.id %}" method="post">
-  {% csrf_token %}
-  {{  comment_form.as_p  }}
-  <input type="submit" value="Add Comment" class='btn-outline-dark'/>
-  </form>
-  <table class="striped">
-      <thead>
-        <tr><th>Date</th><th>Content</th></tr>
-      </thead>
-      <tbody>
+<div class="container-fluid">
+  <div class="detail-wrapper container">
+    <div class="row d-flex">
+      <div class="col-md-10 mx-auto detail-banner d-flex flex-column justify-content-center align-items-center">
+        <h1>{{ article.short_title }}</h1>
+        <h4>{{ article.long_title }}</h4>
+      </div>
+    </div>
+    <div class="row d-flex">
+      <div class="col-md-10 mx-auto detail-content d-flex flex-column justify-content-center">
+        <div class="row d-flex align-items-center justify-content-center">
+          <div class="col-md-6 mx-auto publisher">
+            <h6 class="text-center">By: <b>{{ article.author }}</b> | Published: <b>{{ article.publication}}</b></h6>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="mx-auto">
+            <p>{{ article.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row comment-wrapper">
+      <div class="col-md-8 mx-auto comment-section d-flex justify-content-center align-items-center">
+        <form action="{% url 'add_comment' article.id %}" class="comment-form" method="post">
+          {% csrf_token %}
+          {{  comment_form.as_p  }}
+          <input type="submit" value="Add Comment" class='btn-outline-dark'/>
+        </form>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center comments align-items-center">
+      <div class="col-md-8 mx-auto">
         {% for comment in article.comment_set.all %}
-        <tr>
-          <td>{{comment.date}}</td>
-          <td>{{comment.content}}</td>
-          <td>
+        <div class="row d-flex justify-content-center align-items-center comment-row">
+          <div class="col-md-8 col-12">
+            <p>{{comment.content}}</p>
+            <br/>
+            <span class="">{{comment.date}}</span>
+          </div>
+          <div class="col-md-4 col-12 d-flex">
             <form action="{% url 'delete_comment' article.id comment.id %}" method="POST">
               {% csrf_token %}
-              <input type="submit" value="DELETE" class='btn-outline-dark'/>
-            </form>   
-          </td> 
-          <td>
-            <button type='submit' value='Edit Comment' action="{% url 'edit_comment' article.id comment.id %}" method='POST'>
-              </button>
-              <form action="{% url 'update_comment' article.id comment.id %}" method="POST">
-              {{  update_form.as_p  }}
-              {% csrf_token %}
-              <!-- add button to execute function with dropdown to update the template -->
-              <input type="submit" value="Update Comment" class='btn-outline-dark'/>
-            </form>   
-          </td> 
-        </tr>
+              <input type="submit" value="Delete" class='btn delete-btn'/>
+            </form> 
+            <button id="edit-btn" class="btn ml-4 edit-btn">Edit</button>
+            <!-- <button type='submit' value='Edit Comment' action="{% url 'edit_comment' article.id comment.id %}" id="edit-btn" method='POST'>Edit
+            </button> -->
+          </div>
+        </div>
+        <div class="col-2 dropdown-content" id="dropdown">
+          <form action="{% url 'update_comment' article.id comment.id %}" method="POST">
+            {{  update_form.as_p  }}
+            {% csrf_token %}
+            <!-- add button to execute function with dropdown to update the template -->
+            <input type="submit" value="Update Comment" class='btn update-btn'/>
+          </form>   
+        </div>
         {% endfor %}
-      </tbody>
-    </table>
-      
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 <!-- <script>

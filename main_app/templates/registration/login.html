@@ -1,11 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="login">
-  <input type="hidden" name="next" value="{{ next }}">
-</form>
-
+{%  load static %}
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-md-10 mx-auto login-container">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+          <div class="text-center">
+            <h2 class="">Log In</h2>
+            <p>Need a Bespoke account? <a href="{% url 'signup' %}">Sign Up</a></p>
+          </div>
+          <form method="post" action="{% url 'login' %}" class="login-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn" value="Login">
+            <input type="hidden" name="next" value="{{ next }}">
+          </form>
+          <div class="text-center mt-4">
+            <p><a href="#">Forgot password?</a></p>
+          </div>
+        </div>
+        <div class="col-md-6 align-items-center justify-content-center d-flex">
+          <img src="{% static 'article-group.png' %}" data-tilt class="article-group" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
