@@ -8,7 +8,7 @@
     <div class="row d-flex">
       <div class="col-md-10 mx-auto detail-banner d-flex flex-column justify-content-center align-items-center">
         <h1>{{ article.short_title }}</h1>
-        <h4>{{ article.long_title }}</h4>
+        <h4 class="h4">{{ article.long_title }}</h4>
       </div>
     </div>
     <div class="row d-flex">
@@ -39,10 +39,9 @@
       <div class="col-md-8 mx-auto">
         {% for comment in article.comment_set.all %}
         <div class="row d-flex justify-content-center align-items-center comment-row">
-          <div class="col-md-8 col-12">
+          <div class="col-md-8 col-12 justify-content-center align-items-center py-2">
             <p>{{comment.content}}</p>
-            <br/>
-            <span class="">{{comment.date}}</span>
+            <p class="date">{{comment.date}}</p>
           </div>
           <div class="col-md-4 col-12 d-flex">
             <form action="{% url 'delete_comment' article.id comment.id %}" method="POST">
