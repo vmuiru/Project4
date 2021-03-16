@@ -34,6 +34,7 @@
         </form>
       </div>
     </div>
+
     <div class="row d-flex justify-content-center comments align-items-center">
       <div class="col-md-8 mx-auto">
         {% for comment in article.comment_set.all %}
@@ -48,12 +49,12 @@
               {% csrf_token %}
               <input type="submit" value="Delete" class='btn delete-btn'/>
             </form> 
-            <button id="edit-btn" class="btn ml-4 edit-btn">Edit</button>
+            <button id="edit-btn-{{comment.id}}" class="btn ml-4 edit-btn">Edit</button>
             <!-- <button type='submit' value='Edit Comment' action="{% url 'edit_comment' article.id comment.id %}" id="edit-btn" method='POST'>Edit
             </button> -->
           </div>
         </div>
-        <div class="col-2 dropdown-content" id="dropdown">
+        <div class="col-2 dropdown-content" id="dropdown-{{comment.id}}">
           <form action="{% url 'update_comment' article.id comment.id %}" method="POST">
             {{  update_form.as_p  }}
             {% csrf_token %}

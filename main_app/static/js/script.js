@@ -13,6 +13,7 @@ for (let i =0; i < editBtn.length; i++){
     editBtn[i].addEventListener("click", dropIt)
 }
 
-function dropIt(){
-    document.querySelector(".dropdown-content").classList.toggle("show-content");
-}
+function dropIt(evt) {
+    const id = evt.target.id.charAt(-1);
+    document.querySelector(`#dropdown-${id}`).classList.toggle('show-content');
+  }
