@@ -13,7 +13,9 @@ for (let i =0; i < editBtn.length; i++){
     editBtn[i].addEventListener("click", dropIt)
 }
 
-function dropIt(evt) {
-    const id = evt.target.id.charAt(-1);
+function dropit(evt) {
+    const id = evt.target.id.split('-').pop();
     document.querySelector(`#dropdown-${id}`).classList.toggle('show-content');
   }
+
+  console.log(editBtn);
