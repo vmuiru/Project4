@@ -20,16 +20,18 @@
     <!-- Local Stylesheet -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <!-- Local Javascript -->
+    <!-- External Javascript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
     
 
-    <title>Bespoke</title>
+    <title>Bespoke News</title>
 </head>
 <body>
   <header>
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-        <a class="navbar-brand" href="/">Bespoke</a>
+        <a class="navbar-brand" href="/">Bespoke News</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -60,8 +62,10 @@
             </li>
           </ul>
         {% else %}
+        <div class="ml-auto">
           <a class="btn mr-2 my-2 my-sm-0" href="{% url 'login' %}" role="button"> Login</a>
           <a class="btn btn-signup ml-2 my-2 my-sm-0" href="{% url 'signup' %}" role="button" >Sign Up</a>
+        </div>
         {% endif %}
         </div>
       </nav> 
@@ -75,30 +79,39 @@
 <footer class="text-center">
     <div class="container pb-0">
       <div class="row">
-        <div class="col-lg-2 col-md-3 col-sm-4 col-12 text-left">
+        <div class="col-md-4 col-12 text-left">
           <a class="navbar-brand" href="/">Bespoke</a>
         </div>
-        <div class="col-lg-10 col-md-9 col-sm-8 col-12">
+        <div class="col-md-4 col-12">
           <p class="d-flex justify-content-center align-items-center">
-            <span class="me-3">Register for free today!</span> &nbsp;&nbsp;
-            <a class="btn btn-outline-light btn-rounded" href="{% url 'signup' %}" role="button">Sign Up!</a>
+            <span class="me-3">Register for free today</span> &nbsp;&nbsp;
+            <a class="btn btn-outline-light btn-rounded" href="{% url 'signup' %}" role="button">Sign Up</a>
           </p>
         </div>
+        <div class="col-md-4 col-12">
+
+        </div>
       </div>
-      <div class="row ">
-        <div class="col-lg-2 col-md-3 col-sm-4 col-12 text-center d-flex flex-start">
+      <div class="row">
+        <div class="col-md-4 col-12 text-center d-flex flex-start">
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-facebook-f"></i></a>
         </div>
-        <div class="text-center col-lg-10 col-md-9 col-sm-8 col-12">
+        <div class="col-md-4 col-12">
           &copy; <span id="year"></span> Bespoke. All Rights Reserved.
+        </div>
+        <div class="col-md-4 col-12">
+
         </div>
       </div>
     </div>
 </footer>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+        
+<!-- https://github.com/gijsroge/tilt.js -->
+<script src="https://unpkg.com/tilt.js@1.1.21/dest/tilt.jquery.min.js"></script>
     <script src="{% static 'js/script.js'%}"></script>
 </body>
 </html>

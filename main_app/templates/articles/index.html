@@ -12,24 +12,29 @@
   </div>
   <div class="row pb-4">
     {% for article in articles %}
-    <a href="{% url 'articles_detail' article.id %}">
       <div class="col-sm-4 col-12 mt-4">
-        <div class="card">
-          <img class="card-img-top" src="{% static 'WAPO-logo.jpg' %}" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{ article.short_title}}</h5>
-            <p class="card-text">{{ article.long_title}}</p>
+          <div class="card bespoke-card">
+            <a href="{% url 'articles_detail' article.id %}">
+              <img class="card-img-top" src="{% static 'bespoke-article-cover.png' %}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{ article.short_title}}</h5>
+                <p class="card-text">{{ article.long_title}}</p>
+              </div>
+            </a>
+            <div class="card-footer">
+              <small class="text-muted">Written by: {{article.author}}</small>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center bespoke-card-actions">
+              <div class="col-sm-6 col-12 d-flex justify-content-center align-items-center p-2">
+                <a href="{% url 'articles_update' article.id %}">Edit</a>
+              </div> 
+              <div class="col-sm-6 col-12 d-flex justify-content-center align-items-center p-2 delete-article">
+                <a href="{% url 'articles_delete' article.id %}">Delete</a>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">Written by: {{article.author}}</small>
-          </div>
-          <div class="card-action">
-            <a href="{% url 'articles_update' article.id %}">Edit</a>
-            <a href="{% url 'articles_delete' article.id %}">Delete</a>
-          </div>
-        </div>
+        
       </div>
-    </a>
     {% endfor %} 
   </div>
   

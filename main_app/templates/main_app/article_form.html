@@ -1,16 +1,23 @@
 {% extends '../base.html' %}
 
 {% block content %}
-    {% if object %}
-    <h1>Edit <span class='teal-text'>{{object.name}}</span></h1>
-    {% else %}
-    <h1>Add Article</h1>
-    {% endif %}
-    <form action="" method="POST">
-        {% csrf_token %}
 
-        {{ form.as_p }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 mx-auto add-edit-wrapper">
+            {% if object %}
+            <h1 class="text-center mb-2">Edit <span class='teal-text'>{{object.name}}</span></h1>
+            {% else %}
+            <h1 class="text-center mb-2">Add Article</h1>
+            {% endif %}
+            <form action="" method="POST" class="add-edit-form">
+                {% csrf_token %}
 
-        <input type='submit' value='Submit' class='btn'/>
-    </form>
+                {{ form.as_p }}
+
+                <input type='submit' value='Submit' class='btn'/>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
