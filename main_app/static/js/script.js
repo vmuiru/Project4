@@ -17,5 +17,3 @@ function dropIt(evt) {
     const id = evt.target.id.split('-').pop();
     document.querySelector(`#dropdown-${id}`).classList.toggle('show-content');
   }
-
-  console.log(editBtn);
