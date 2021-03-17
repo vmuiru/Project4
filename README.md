@@ -22,7 +22,6 @@ wanted to give the everyday user the ability to add their own article and look u
 * ![](https://img.shields.io/badge/Bootstrap4-informational?style=flat-square&logo=Bootstrap&logoColor=FFFAF3&color=212121)
 * ![](https://img.shields.io/badge/PostgreSQL-informational?style=flat-square&logo=PostgreSQL&logoColor=FFFAF3&color=212121)
 * ![](https://img.shields.io/badge/Heroku-informational?style=flat-square&logo=Heroku&logoColor=FFFAF3&color=212121) (for deployment)
-* ![](https://img.shields.io/badge/MongoDB-informational?style=flat-square&logo=MongoDB&logoColor=FFFAF3&color=212121)
 
 
 ## &#x1f511; Features
