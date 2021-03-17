@@ -1,3 +1,6 @@
+![Github Banner](https://raw.githubusercontent.com/kodeitkeem/Project4/master/main_app/static/app-screenshots/bespoke-github-thumbnail.png)
+
+
 # Bespoke News
 
 Curate the news YOU want to see! Keep your thoughts and opinions organized on each article you collect.
@@ -44,6 +47,9 @@ Users can:
 
 
 ## &#x1f4f7; Application Images 
+<img src="https://raw.githubusercontent.com/kodeitkeem/Project4/master/main_app/static/app-screenshots/bespoke-articles-page.png" width="600"/>
+
+<img src="https://raw.githubusercontent.com/kodeitkeem/Project4/master/main_app/static/app-screenshots/bespoke-article-detail-page.png" width="600"/>
 
 
 ## &#x1f52e; Stretch Goals
